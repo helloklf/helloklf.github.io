@@ -1,0 +1,98 @@
+body, html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+html {
+  font-size: 0.78125vw;
+}
+@media (max-width: 599px) {
+  html {
+    font-size: 2.6666667vw;
+  }
+}
+* {
+  -webkit-tap-highlight-color: transparent !important;
+}
+::-webkit-scrollbar
+{
+    width: 2px;
+    height: 2px;
+}
+::-webkit-scrollbar-track-piece
+{
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: transparent;
+}
+
+.common-icon {
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+
+.icon-github {
+  @extend .common-icon;
+  background-image: url('./icons/github.svg');
+}
+.icon-documents {
+  @extend .common-icon;
+  background-image: url('./icons/documents.svg');
+}
+.icon-back {
+  @extend .common-icon;
+  background-image: url('./icons/back.svg');
+}
+.icon-home {
+  @extend .common-icon;
+  background-image: url('./icons/home.svg');
+}
+.icon-setup {
+  @extend .common-icon;
+  background-image: url('./icons/setup.svg');
+}
+.icon-app-store {
+  @extend .common-icon;
+  background-image: url('./icons/app-store.svg');
+}
+
+.icon-info {
+  @extend .common-icon;
+  background-image: url('./icons/info.svg');
+}
+.icon-restart {
+  @extend .common-icon;
+  background-image: url('./icons/restart.svg');
+}
+.icon-code {
+  @extend .common-icon;
+  background-image: url('./icons/code.svg');
+}
+.icon-samples {
+  @extend .common-icon;
+  background-image: url('./icons/samples.svg');
+}
+.icon-data {
+  @extend .common-icon;
+  background-image: url('./icons/data.svg');
+}
+.icon-web {
+  @extend .common-icon;
+  background-image: url('./icons/web.svg');
+}
+.icon-docker {
+  @extend .common-icon;
+  background-image: url('./icons/docker.svg');
+}
