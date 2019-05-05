@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <nav-bar @toggleMenu="toggleMenu" :title="title" />
-    <nav-menu :show.sync="showMenu" :menus="menus" @menuSelect="menuSelect"/>
     <div class="root-content">
       <router-view />
     </div>
@@ -9,34 +7,11 @@
 </template>
 
 <script>
-import NavMenu from './components/NavMenu'
-import NavBar from './components/NavBar'
 export default {
   name: 'app',
   data () {
     return {
-      showMenu: false,
-      title: '',
-      menus: []
     }
-  },
-  methods: {
-    toggleMenu () {
-      this.showMenu = !this.showMenu
-    },
-    menuSelect (item) {
-      if (this.$router && item.route) {
-        this.$router.replace(item.route)
-      }
-      if (item.label) {
-        this.title = item.label
-        window.document.title = item.label
-      }
-    }
-  },
-  components: {
-    NavMenu,
-    NavBar
   }
 }
 </script>

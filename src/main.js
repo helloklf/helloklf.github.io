@@ -3,8 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import TouchButton from '@/components/TouchButton'
+import TouchBlock from '@/components/TouchBlock'
 
 Vue.config.productionTip = false
+Vue.use(TouchButton)
+Vue.use(TouchBlock)
 
 /* eslint-disable no-new */
 new Vue({
