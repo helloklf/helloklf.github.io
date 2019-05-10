@@ -7,8 +7,8 @@ import TouchButton from '@/components/TouchButton'
 import TouchBlock from '@/components/TouchBlock'
 
 Vue.config.productionTip = false
-Vue.use(TouchButton)
-Vue.use(TouchBlock)
+Vue.component('touch-block', TouchBlock)
+Vue.component('touch-button', TouchButton)
 
 /* eslint-disable no-new */
 new Vue({
