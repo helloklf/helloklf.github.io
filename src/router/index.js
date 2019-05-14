@@ -12,6 +12,7 @@ import Apps from '@/pages/Apps'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/vue/test/e2e',

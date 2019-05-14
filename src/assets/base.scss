@@ -3,13 +3,16 @@ body, html {
   padding: 0;
   margin: 0;
   overflow: hidden;
-}
-html {
-  font-size: 0.78125vw;
+  font-size: 12px;
 }
 @media (max-width: 599px) {
   html {
     font-size: 2.6666667vw;
+  }
+}
+@media (max-width: 1500px) {
+  html {
+    font-size: 0.78125vw;
   }
 }
 * {

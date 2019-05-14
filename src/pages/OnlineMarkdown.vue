@@ -5,7 +5,7 @@
 </template>
 <script>
 import axios from 'axios'
-import MarkdownView from '@/components/MarkdownView.vue'
+import MarkdownView from '@/components/MarkdownView/MarkdownView.vue'
 export default {
   data () {
     return {
@@ -31,7 +31,7 @@ export default {
         this.markdownContent = url
         return
       }
-      axios.get(`.${url}`).then((r) => {
+      axios.get(`${url}`).then((r) => {
         this.markdownContent = r.data
       }).catch((error) => {
         this.markdownContent = '## 内容加载失败： \n\n``` javascript\n' + JSON.stringify(error, null, 22) + ' \n\n```'

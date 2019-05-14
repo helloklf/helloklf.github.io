@@ -8,19 +8,19 @@
 <style lang='scss'>
 .markdown-online-editer {
   height: 100%;
-  .markdown-textview,
+  .markdown-view,
   .markdown-edit{
     overflow-y: auto;
     overflow-x: hidden;
     height: 100%;
   }
   @media screen and (max-width: 1023px) {
-    .markdown-textview,
+    .markdown-view,
     .markdown-edit{
       width: 100%;
     }
     &:not(.preview) {
-      .markdown-textview{
+      .markdown-view{
         display: none;
       }
     }
@@ -31,7 +31,7 @@
     }
   }
   @media screen and (min-width: 1024px) {
-    .markdown-textview,
+    .markdown-view,
     .markdown-edit{
       box-sizing: border-box;
       width: 50%;
@@ -64,7 +64,7 @@
 </style>
 
 <script>
-import MarkdownView from '../components/MarkdownView.vue'
+import MarkdownView from '../components/MarkdownView/MarkdownView.vue'
 import MarkdownEdit from '../components/MarkdownEdit.vue'
 export default {
   data () {

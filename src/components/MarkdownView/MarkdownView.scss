@@ -1,0 +1,275 @@
+.markdown-textview-fullscreen {
+  text-align: right;
+  margin: 2em 1em;
+
+  .toggle {
+    display: inline-block;
+    border: 1px solid #eee;
+    color: #888;
+    background: #fff;
+    line-height: 2em;
+    padding: 0 0.5em;
+    cursor: pointer;
+    border-radius: 0.3em;
+
+    &:hover {
+      background: #ddd;
+    }
+  }
+}
+
+.markdown-textview {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  line-height: 1.6em;
+  /*
+  background-color: #fafafa;
+  border: 1px solid #eee;
+  */
+  border-radius: 0.5em;
+  padding: 1em;
+  font-size: 14px;
+  box-sizing: border-box;
+  word-break: break-all;
+  word-wrap: normal;
+  white-space: wrap;
+  color: #555;
+
+
+  blockquote {
+    border-left: 5px solid #0094ff;
+    margin-left: 0;
+    padding-left: 2em;
+  }
+
+  blockquote>p {
+    white-space: pre-wrap;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding: 10px;
+    margin-top: 3em;
+    margin-bottom: 10px;
+    width: auto;
+    color: #006caa;
+  }
+
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  h5:first-child,
+  h6:first-child {
+    margin-top: 0.5em;
+  }
+
+  pre {
+    >code {
+      border: 1px solid #ddd;
+    }
+
+    border-radius: 5px;
+    white-space: pre-wrap;
+    width: auto;
+    display: inline-block;
+    margin-right: auto;
+    vertical-align: middle;
+  }
+
+  pre code {
+    margin-right: auto;
+    width: auto;
+    font-size: 13px;
+    line-height: 1.5em;
+    color: #000;
+  }
+
+  table {
+    font-size: 0.9em;
+    border-collapse: separate;
+    border-spacing: 0px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc
+  }
+
+  table th,
+  table td {
+    padding: 5px 7px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc
+  }
+
+  table th {
+    color: #888;
+    font-weight: 500;
+  }
+
+  table td {
+    color: #444;
+  }
+
+  code {
+    font-family: Consolas, 'Courier New', Courier, monospace;
+    padding: 3px 4px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    vertical-align: top;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li {
+
+    &>code.hljs,
+    &>b>code.hljs,
+    &>em>code.hljs {
+      display: inline-block;
+      height: 1.2em;
+      line-height: 1.2em;
+      vertical-align: middle;
+
+      &:not(:first-child:last-child) {
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+  a {
+    color: #015ea0;
+    text-decoration: none;
+  }
+
+  table,
+  pre {
+    margin-left: 3em;
+  }
+
+  .todo {
+    color: #fff;
+    background-color: #ffbd2a;
+  }
+
+  .fixme {
+    color: #fff;
+    background-color: #f06292;
+  }
+
+  li>* {
+    vertical-align: middle;
+  }
+
+  li {
+    margin-bottom: 0.4em;
+    line-height: 1.8em;
+  }
+}
+
+/*
+.markdown-textview::before{
+  content: 'html/markdown';
+  color: #888;
+  font-style: italic;
+  font-size: 0.75em;
+  margin-top: -0.6em;
+  margin-bottom: 1em;
+  display: block; 
+}
+*/
+@media screen and (max-width: 799px) {
+  .markdown-textview-fullscreen {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .markdown-textview {
+    background: #fafafa;
+    border: 1px solid #eee;
+
+    &:not(.fullscreen) {
+      max-width: 960px;
+      margin: 0 auto;
+      /*margin: 2em auto;*/
+    }
+  }
+}
+
+.markdown-view {
+  .markdown-nav {
+    a {
+      text-decoration: none;
+      line-height: 1.5em;
+    }
+    max-width: 250px;
+    user-select: none;
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    box-shadow: 0 0 10px #ccc;
+    background: #fff;
+    padding: 15px;
+    font-size: 13px;
+  }
+
+  .markdown-nav:not(.hide) {
+    min-width: 190px;
+  }
+
+  .markdown-nav.hide>ul,
+  .markdown-nav.hide>ol {
+    display: none;
+  }
+
+  .markdown-toogle-panel {
+    text-align: right;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .markdown-toogle-panel::after {
+    color: #0094ff;
+    content: "目录▲";
+    font-size: 12px;
+  }
+
+  .markdown-nav.hide .markdown-toogle-panel::after {
+    content: "目录▼";
+  }
+
+  .markdown-nav a[href] {
+    color: #000;
+    cursor: pointer;
+  }
+
+  .markdown-nav a:hover,
+  .markdown-nav a:active {
+    color: #0094ff;
+  }
+
+  .markdown-nav ul,
+  .markdown-nav ol {
+    padding-left: 2em;
+    margin: 0.5em 0;
+    margin-bottom: 0.5em;
+  }
+
+  .markdown-nav ul {
+    list-style: square;
+  }
+
+  .markdown-nav li>ul,
+  .markdown-nav li>ol {
+    opacity: 0.8;
+  }
+
+}
