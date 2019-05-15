@@ -36,9 +36,9 @@
 
 
   blockquote {
-    border-left: 5px solid #0094ff;
+    border-left: 0.35em solid #0094ff;
     margin-left: 0;
-    padding-left: 2em;
+    padding-left: 2.6em;
   }
 
   blockquote>p {
@@ -67,8 +67,20 @@
     margin-top: 0.5em;
   }
 
+  ul {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+  }
+
   pre {
-    >code {
+    code {
+      margin-right: auto;
+      width: auto;
+      font-size: 13px;
+      line-height: 1.5em;
+      color: #000;
+    }
+    > code {
       border: 1px solid #ddd;
     }
 
@@ -77,15 +89,13 @@
     width: auto;
     display: inline-block;
     margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
     vertical-align: middle;
-  }
-
-  pre code {
-    margin-right: auto;
-    width: auto;
-    font-size: 13px;
-    line-height: 1.5em;
-    color: #000;
+  
+    &+ul {
+      margin-top: 1em;
+    }
   }
 
   table {
@@ -129,7 +139,7 @@
   li {
 
     &>code.hljs,
-    &>b>code.hljs,
+    &>strong>code.hljs,
     &>em>code.hljs {
       display: inline-block;
       height: 1.2em;

@@ -99,3 +99,7 @@ body, html {
   @extend .common-icon;
   background-image: url('./icons/docker.svg');
 }
+.icon-menu {
+  @extend .common-icon;
+  background-image: url('./icons/menu.svg');
+}

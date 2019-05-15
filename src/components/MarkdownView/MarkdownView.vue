@@ -55,6 +55,9 @@ export default {
           nodeList.push(node)
         }
       }
+      if (nodeList.length < 1) {
+        return
+      }
 
       // 遍历找到的【h1-h6】标签，生成ol
       function el (el) {
@@ -106,7 +109,12 @@ export default {
 
       navPanel.appendChild(tooglePanel)
       navPanel.appendChild(threeView)
+      if (this.chachedNavPanel) {
+        this.$refs.codeview.parentElement.removeChild(this.chachedNavPanel)
+        this.chachedNavPanel = null
+      }
       this.$refs.codeview.parentElement.appendChild(navPanel)
+      this.chachedNavPanel = navPanel
     }
   },
   created () {
@@ -126,7 +134,7 @@ export default {
         this.initNavigationTree()
       })
       // 由于目前还不支持go语言，所以将go的高亮解析先用其它的语言凑合
-      return marked(this.content.replace(/\\\|/g, '&#124;').replace(/```go/g, '\n```java'))
+      return marked(this.content.replace(/\\\|/g, '&#124;').replace(/```/g, '\n```'))
     }
   }
 }

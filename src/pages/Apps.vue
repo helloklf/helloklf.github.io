@@ -22,7 +22,8 @@
   .basic-info {
     text-align: center;
     padding: 5em 0 3em 0;
-    box-shadow: 0 2px 4px #ddd;
+    box-shadow: 0 0 0.5em rgba(128, 128, 128, 0.5);
+    background-color: #fff;
     .app-logo {
       display: inline-block;
       height: 7em;

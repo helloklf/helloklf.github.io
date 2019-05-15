@@ -6,10 +6,7 @@
       <span class="icon-download" title="下载" @click="saveFile"></span>
     </div>
     <input placeholder="文件名" v-model="markdownTitle" maxlength="50" />
-    <textarea v-model="markdownContent" placeholder="输入内容..."></textarea>
-    <div class="online-edit">
-      <a href="https://dillinger.io/" target="_blank">推荐使用在线编辑器：https://dillinger.io/</a>
-    </div>
+    <textarea v-model="markdownContent" placeholder="输入内容..." spellcheck="false"></textarea>
   </div>
 </template>
 <style lang='scss'>
@@ -50,8 +47,10 @@
   }
   input {
     border: none;
-    padding: 0.5em;
-    background-color: #f8f8f8;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    font-size: 1.3em;
+    padding: 0.6em 1em;
     text-align: center;
   }
   textarea {
@@ -62,20 +61,11 @@
     outline: none;
     display: block;
     width: 100%;
-    padding: 0.5em 1em 0.5em 0.2em;
+    padding: 0.5em;
     font-size: 14px;
     line-height: 1.4em;
     flex: 1;
     color: #444;
-  }
-  .online-edit {
-    border-top: 1px solid #eee;
-    padding: 0.5em;
-    font-size: 0.8em;
-    a {
-      text-decoration: none;
-      color: darkcyan;
-    }
   }
 }
 </style>

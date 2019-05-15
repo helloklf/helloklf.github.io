@@ -1,47 +1,55 @@
 <template>
   <div id="app">
     <div class="navigation-bar">
-      <div class="nav-item color-oranage">
-        <i class="icon icon-fire"></i>
-        <div>
-          <h4>新鲜出炉</h4><div class="list"> Golang </div>
+      <div>
+        <i @click="navigationBar = ! navigationBar" class="navigation-bar-switch icon-menu"></i>
+      </div>
+      <div v-show="navigationBar" class="navigation-bar-items">
+        <div class="nav-item color-oranage">
+          <i class="icon icon-fire"></i>
+          <div>
+            <h4>新鲜出炉</h4><div class="list"> Golang </div>
+          </div>
+        </div>
+
+        <div class="nav-item color-green" @click="goOpenSource">
+          <i class="icon icon-github"></i>
+          <div>
+            <h4>开源项目</h4><div class="list"> Golang </div>
+          </div>
+        </div>
+
+        <div class="nav-item color-blue" @click="goDocumentLibrary">
+          <i class="icon icon-documents"></i>
+          <div>
+            <h4>文档库</h4>
+            <div class="list"> Golang </div>
+          </div>
+        </div>
+
+        <div class="nav-item color-yellow" @click="goApps">
+          <i class="icon icon-app-store"></i>
+          <div>
+            <h4>应用</h4><div class="list"> Golang </div>
+          </div>
+        </div>
+
+        <div class="nav-item color-purple" @click="goMarkdownEdit">
+          <i class="icon icon-markdown"></i>
+          <div>
+            <h4>Markdown编辑器</h4><div class="list"> Golang </div>
+          </div>
+        </div>
+
+        <div class="nav-item color-sky" @click="goAbout">
+          <i class="icon icon-about"></i>
+          <div>
+            <h4>关于</h4><div class="list"> Golang </div>
+          </div>
         </div>
       </div>
-
-      <div class="nav-item color-green" @click="goOpenSource">
-        <i class="icon icon-github"></i>
-        <div>
-          <h4>开源项目</h4><div class="list"> Golang </div>
-        </div>
-      </div>
-
-      <div class="nav-item color-blue" @click="goDocumentLibrary">
-        <i class="icon icon-documents"></i>
-        <div>
-          <h4>文档库</h4>
-          <div class="list"> Golang </div>
-        </div>
-      </div>
-
-      <div class="nav-item color-yellow" @click="goApps">
-        <i class="icon icon-app-store"></i>
-        <div>
-          <h4>应用</h4><div class="list"> Golang </div>
-        </div>
-      </div>
-
-      <div class="nav-item color-purple" @click="goMarkdownEdit">
-        <i class="icon icon-markdown"></i>
-        <div>
-          <h4>Markdown编辑器</h4><div class="list"> Golang </div>
-        </div>
-      </div>
-
-      <div class="nav-item color-sky" @click="goAbout">
-        <i class="icon icon-about"></i>
-        <div>
-          <h4>关于</h4><div class="list"> Golang </div>
-        </div>
+      <div>
+        <i @click="navigationBar = ! navigationBar" class="navigation-bar-switch icon-setup"></i>
       </div>
     </div>
 
@@ -52,37 +60,51 @@
 </template>
 
 <script>
+import './assets/highlight/highlight.pack.js'
+import './assets/highlight/styles/vs.css'
+
 export default {
   name: 'app',
   data () {
     return {
+      navigationBar: true
     }
   },
   methods: {
+    autoHideNavigationBar () {
+      if (window.innerWidth < 600) {
+        this.navigationBar = false
+      }
+    },
     goOpenSource () {
       this.$router.push({
         name: 'OpenSource'
       })
+      this.autoHideNavigationBar()
     },
     goDocumentLibrary () {
       this.$router.push({
         name: 'DocumentLibrary'
       })
+      this.autoHideNavigationBar()
     },
     goMarkdownEdit () {
       this.$router.push({
         name: 'MarkdownOnlineEdit'
       })
+      this.autoHideNavigationBar()
     },
     goApps () {
       this.$router.push({
         name: 'Apps'
       })
+      this.autoHideNavigationBar()
     },
     goAbout () {
       this.$router.push({
         name: 'About'
       })
+      this.autoHideNavigationBar()
     }
   }
 }
@@ -92,7 +114,22 @@ export default {
 </style>
 
 <style lang="scss">
+@keyframes slide_from_bottom {
+  0% {
+    opacity: 0.4;
+    transform: translateY(50%);
+  }
+  70% {
+    opacity: 0.4;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 #app {
+  background-color: #f8f8f8;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -109,21 +146,45 @@ export default {
   }
 }
 
+.root-content {
+  margin-left: 0.5em;
+}
 .navigation-bar {
+  background-color: #fff;
   padding: 1em 1em 0 1em;
   max-height: 100%;
   height: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   box-sizing: border-box;
-  width: 20em;
+  user-select: none;
   box-shadow: 0 0 0.5em rgba(128, 128, 128, 0.5);
-  margin-right: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .navigation-bar-items {
+    overflow-y: auto;
+    animation: slide_from_bottom 0.5s ease-out;
+  }
   * {
     font-size: inherit;
   }
+  .navigation-bar-switch {
+    height: 2.5em;
+    width: 2.5em;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+    opacity: 0.8;
+    transition: transform 0.4s ease-out;
+    &:hover {
+      opacity: 1;
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+  }
   
   .nav-item {
+    width: 18em;
     padding: 1.5em 1em 1em 1em;
     flex-direction: row-reverse;
     display: flex;
@@ -214,6 +275,41 @@ export default {
         background-image: linear-gradient(top left, #d6e1f7, #74c0ff);
       }
     }
+  }
+}
+
+@media screen and (max-width: 599px) {
+  #app{
+    flex-direction: column-reverse;
+  }
+  .navigation-bar {
+    margin-left: 0em;
+    margin-top: 0.5em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .navigation-bar-items {
+    flex: 1;
+    flex-wrap: wrap;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    box-sizing: border-box;
+    
+    .nav-item {
+      padding: 0.6em 0.6em 0.4em 0.5em;
+      font-size: 0.8em;
+      display: inline-flex;
+      width: 44%;
+      margin-left: 2%;
+      flex-grow: 1;
+      float: left;
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .navigation-bar-items {
+    flex: 1;
   }
 }
 </style>

@@ -17,7 +17,6 @@
         </li>
       </ol>
     </div>
-    <div class="footer">Design By Helloklf</div>
   </div>
 </template>
 
@@ -45,7 +44,7 @@ export default {
 
 <style lang='scss'>
 .docs-library {
-  background: #fff;
+  background-color: #fff;
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -54,7 +53,7 @@ export default {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     .group-title {
-      color: rgb(0, 119, 255);
+      color: #00ADEF;
       border-radius: 1.5em;
       width: auto;
       display: inline-block;
@@ -70,7 +69,7 @@ export default {
         background: rgb(0, 119, 255);
         color: #fff;
         border-radius: 50%;
-        box-shadow: 0 0 3px #888;
+        box-shadow: 0 0 0.5em rgba(128, 128, 128, 0.5);
         text-transform: uppercase;
         font-weight: 900;
         &[data-lang='vue'] {
@@ -102,7 +101,6 @@ export default {
   .libray-flex-wrap {
     padding: 0;
     list-style: none;
-    background: #fff;
     display: flex;
     flex-wrap: wrap;
     li {
@@ -112,15 +110,13 @@ export default {
       width: 12em;
       display: inline-block;
       position: relative;
-      border:1px solid #eee;
-      box-shadow: 2px 2px 5px #ccc;
+      box-shadow: 0 0 0.5em rgba(128, 128, 128, 0.5);
       margin: 1em 1em 0 0;
       background: #fff;
       overflow: hidden;
       user-select: none;
       cursor: pointer;
       word-break: break-all;
-      background: #fff;
       border-radius: 0.2em;
       transition: transform 0.5s ease-in-out;
       &:active,
@@ -159,15 +155,6 @@ export default {
         opacity: 0.2;
       }
     }
-  }
-  .footer {
-    user-select: none;
-    text-align: center;
-    line-height: 3em;
-    font-size: 1em;
-    color: #888;
-    box-shadow: 0 0 5px #ccc;
-    z-index: 4;
   }
 }
 @media screen and (max-width: 599px) {

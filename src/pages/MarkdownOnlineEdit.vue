@@ -39,10 +39,10 @@
     }
     .markdown-edit {
       border: 1px solid #eee;
-      border-width: 0 1px 0 1em;
+      border-width: 0 1px 0 1px;
     }
     .toggle-preview{
-      display: none;
+      display: none !important;
     }
   }
   .toggle-preview {

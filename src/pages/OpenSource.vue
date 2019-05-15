@@ -79,8 +79,11 @@ export default {
     box-shadow: 0 0 2px #ccc;
     padding: 0.5em;
     color: #333;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.5em rgba(128, 128, 128, 0.5);
+    background-color: #fff;
     .title {
-      font-size: 1.6em;
+      font-size: 1.4em;
       line-height: 1.5em;
       font-family: '等线';
       a {
@@ -92,6 +95,7 @@ export default {
       line-height: 1.6em;
       color: #888;
       min-height: 5em;
+      font-size: 0.8em;
     }
     a {
       display: block;
@@ -115,8 +119,12 @@ export default {
         a {
           display: inline-block;
           margin-right: 1em;
+          cursor: pointer;
           > *{
             vertical-align: middle;
+          }
+          &:hover {
+            color: #0366d6;
           }
         }
       }
@@ -141,14 +149,10 @@ export default {
 @media screen and (max-width: 599px) {
   .page-opensource {
     .userinfo {
-      margin: 0.17em;
-      box-shadow: 0 0 2px #ccc;
-    }
-  }
-}
-@media screen and (max-width: 599px){
-  .page-opensource {
-    .userinfo {
+      margin: 0.35em;
+      box-shadow: 0 0 0.5em rgba(128, 128, 128, 0.5);
+      border-radius: 0.5em;
+      background-color: #fff;
       font-size: 1.8em;
       line-height: 1.2em;
     }
