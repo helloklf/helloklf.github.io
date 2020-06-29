@@ -123,13 +123,18 @@
   }
 
   code {
+    display: inline-block;
     font-family: Consolas, 'Courier New', Courier, monospace;
     padding: 3px 4px;
     background-color: #f0f0f0;
     border-radius: 4px;
-    vertical-align: top;
+    vertical-align: middle;
+  }
+  pre > code {
+    display: block;
   }
 
+  td,
   h1,
   h2,
   h3,
@@ -137,7 +142,6 @@
   h5,
   h6,
   li {
-
     &>code.hljs,
     &>strong>code.hljs,
     &>em>code.hljs {

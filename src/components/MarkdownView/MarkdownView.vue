@@ -133,7 +133,7 @@ export default {
         }
         this.initNavigationTree()
       })
-      // 由于目前还不支持go语言，所以将go的高亮解析先用其它的语言凑合
+      // 处理一些特殊符号，如 “|”
       return marked(this.content.replace(/\\\|/g, '&#124;').replace(/```/g, '\n```'))
     }
   }
