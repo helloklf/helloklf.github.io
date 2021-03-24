@@ -34,7 +34,6 @@
   white-space: wrap;
   color: #555;
 
-
   blockquote {
     border-left: 0.35em solid #0094ff;
     margin-left: 0;
@@ -146,9 +145,10 @@
     &>strong>code.hljs,
     &>em>code.hljs {
       display: inline-block;
-      height: 1.2em;
+      min-height: 1.2em;
       line-height: 1.2em;
       vertical-align: middle;
+      overflow: visible;
 
       &:not(:first-child:last-child) {
         padding-top: 0;
@@ -185,6 +185,66 @@
   li {
     margin-bottom: 0.4em;
     line-height: 1.8em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .markdown-textview {
+    background: #ffff;
+    font-size: 12px;
+    font-size: 12px;
+    padding: 50px 2px 20px 2px;
+    ul,ol {
+      padding-left: 25px;
+      li {
+        code {
+          box-shadow: 0px 0px 2px #888;
+          padding: 0 2px;
+          vertical-align: text-top;
+          margin: 0 2px;
+        }
+      }
+    }
+    table,
+    pre {
+      margin-left: 2px;
+      font-size: inherit;
+    }
+    
+    table {
+      td {
+        padding: 6px 2px;
+      }
+      td:nth-child(1) {
+        word-break: keep-all;
+      }
+    }
+
+    pre code,
+    pre, code {
+      font-size: inherit;
+    }
+    pre > code {
+      background-color: #fafafa;
+    }
+
+    td,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      padding-left: 2px;
+      padding-right: 0px;
+      margin-top: 2em;
+      margin-bottom: 0;
+      padding-bottom: 0.3em;
+    }
+    blockquote {
+      padding-left: 20px;
+      line-height: 1.2em;
+    }
   }
 }
 

@@ -95,7 +95,7 @@ export default {
       let threeView = mapChilds(nodeList) // 生成具有层级结构的ol
 
       let navPanel = el('div')
-      navPanel.className = 'markdown-nav'
+      navPanel.className = 'markdown-nav hide'
 
       let tooglePanel = el('div')
       tooglePanel.className = 'markdown-toogle-panel'

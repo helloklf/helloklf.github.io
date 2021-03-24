@@ -1,234 +1,203 @@
 export default [
   {
-    group: 'Vue.js E2E测试',
-    type: 'js',
-    docs: [{
-      key: 'docs-vue-parcel',
-      label: 'Parcel + Vue体验',
-      desc: '使用Parcel创建并打包Web项目',
-      icon: 'icon-restart',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('./vue/parcel/Parcel + Vue体验.md')
-        }
-      }
-    }]
-  },
-  {
-    group: 'Vue.js E2E测试',
-    type: 'vue',
+    group: 'PIO(Kr-Script)3.9.1',
+    type: 'PIO',
     docs: [
       {
-        key: 'docs-vue-test-setup',
-        label: 'E2E、Unit测试框架安装',
-        desc: '介绍E2E测试框架Nightwatch、Unit测试框架Karma-mocha在Vue项目中的集成安装',
-        icon: 'icon-restart',
+        key: 'docs-pio-index',
+        label: '目录',
+        desc: 'PIO文档目录',
         route: {
           name: 'OnlineMarkdown',
           query: {
-            doc: require('./vue/test/setup.md')
-          }
-        }
-      },
-      {
-        key: 'docs-vue-e2e-about',
-        label: 'E2E Nightwatch.js 简介',
-        icon: 'icon-info',
-        route: {
-          name: 'OnlineMarkdown',
-          query: {
-            doc: require('./vue/test/e2e_nightwatch_about.md')
-          }
-        }
-      },
-      {
-        key: 'docs-vue-e2e-config',
-        label: 'E2E Nightwatch.js 配置',
-        icon: 'icon-setup',
-        route: {
-          name: 'OnlineMarkdown',
-          query: {
-            doc: require('./vue/test/e2e_nightwatch_config.md')
-          }
-        }
-      },
-      {
-        key: 'docs-vue-e2e-assert',
-        label: 'E2E Nightwatch.js 语法',
-        icon: 'icon-code',
-        route: {
-          name: 'OnlineMarkdown',
-          query: {
-            doc: require('./vue/test/e2e_nightwatch_assert.md')
-          }
-        }
-      },
-      {
-        key: 'docs-vue-e2e-sample',
-        label: 'E2E Nightwatch.js 示例',
-        icon: 'icon-samples',
-        route: {
-          name: 'OnlineMarkdown',
-          query: {
-            doc: require('./vue/test/e2e_nightwatch_sample.md')
-          }
-        }
-      },
-      {
-        key: 'docs-vue-e2e-extend',
-        label: 'E2E Nightwatch.js 拓展',
-        route: {
-          name: 'OnlineMarkdown',
-          query: {
-            doc: require('./vue/test/e2e_nightwatch_extend.md')
+            doc: ('file:///android_asset/docs/Index.md')
           }
         }
       }
     ]
   },
   {
-    group: 'Vue.js Unit测试',
-    type: 'vue',
+    group: '功能节点',
+    type: 'XML',
     docs: [
       {
-        key: 'docs-vue-test-setup',
-        label: 'E2E、Unit测试框架安装',
-        desc: '介绍E2E测试框架Nightwatch、Unit测试框架Karma-mocha在Vue项目中的集成安装',
-        icon: 'icon-restart',
+        key: 'docs-pio-Action',
+        label: 'Action',
+        desc: 'Action是PIO里最复杂也是最强大的功能节点',
         route: {
           name: 'OnlineMarkdown',
           query: {
-            doc: require('./vue/test/setup.md')
+            doc: ('file:///android_asset/docs/Action.md')
           }
         }
       },
       {
-        key: 'unit_karma_mocha_about',
-        label: 'Unit Karma_Mocha 简介',
-        icon: 'icon-info',
+        key: 'docs-pio-Switch',
+        label: 'Switch',
+        desc: '开关组件',
         route: {
           name: 'OnlineMarkdown',
           query: {
-            doc: require('./vue/test/unit_karma_mocha_about.md')
+            doc: ('file:///android_asset/docs/Switch.md')
           }
         }
       },
       {
-        key: 'unit_karma_mocha_config',
-        label: 'Unit Karma_Mocha 配置',
-        icon: 'icon-setup',
+        key: 'docs-pio-Picker',
+        label: 'Picker',
+        desc: '下拉选择组件',
         route: {
           name: 'OnlineMarkdown',
           query: {
-            doc: require('./vue/test/unit_karma_mocha_config.md')
-          }
-        }
-      },
-      {
-        key: 'unit_karma_mocha_test',
-        label: 'Unit Karma_Mocha 语法',
-        icon: 'icon-code',
-        route: {
-          name: 'OnlineMarkdown',
-          query: {
-            doc: require('./vue/test/unit_karma_mocha_test.md')
-          }
-        }
-      },
-      {
-        key: 'b',
-        label: 'Markdown Online Test',
-        icon: 'icon-samples',
-        route: {
-          name: 'OnlineMarkdown',
-          query: {
-            doc: require('@/docs/test.md')
+            doc: ('file:///android_asset/docs/Picker.md')
           }
         }
       }
     ]
   },
   {
-    group: 'Golang 上手',
-    type: 'go',
-    docs: [{
-      key: 'setup',
-      label: '准备开始',
-      desc: '在你的Windows、Linux、Mac设备上，准备Go开发和运行环境，并创建 “Hello World!”',
-      icon: 'icon-restart',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('@/docs/go/1. 准备开始.md')
+    group: '包装节点',
+    type: 'XML',
+    docs: [
+      {
+        key: 'docs-pio-Group',
+        label: 'Group',
+        desc: '为你的功能分组',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Group.md')
+          }
+        }
+      },
+      {
+        key: 'docs-pio-Page',
+        label: 'Page',
+        desc: '将你的功能拆分成多个页面',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Page.md')
+          }
+        }
+      },
+      {
+        key: 'docs-pio-Text',
+        label: 'Text',
+        desc: '显示色彩丰富的文字',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Text.md')
+          }
         }
       }
-    }, {
-      key: 'basic',
-      label: '语法基础',
-      desc: 'Go语言基本语法',
-      icon: 'icon-code',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('@/docs/go/2. 语法基础.md')
+    ]
+  },
+  {
+    group: '资源文件',
+    type: 'RES',
+    docs: [
+      {
+        key: 'docs-pio-Resource',
+        label: 'Resource',
+        desc: '静态资源文件',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Resource.md')
+          }
+        }
+      },
+      {
+        key: 'docs-pio-Script',
+        label: 'Script',
+        desc: '脚本文件',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Script.md')
+          }
         }
       }
-    }, {
-      key: 'type',
-      label: '数据类型',
-      desc: '了解Go的常见数据类型，以及类型转换',
-      icon: 'icon-code',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('@/docs/go/3. 数据类型.md')
+    ]
+  },
+  {
+    group: '额外说明',
+    type: 'EXT',
+    docs: [
+      {
+        key: 'docs-pio-Property_Visible',
+        label: 'visible属性',
+        desc: '你可以通过visible配置一段脚本，用来动态设置功能是否可以在当前设备上显示',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Property_Visible.md')
+          }
+        }
+      },
+      {
+        key: 'docs-pio-entrance',
+        label: 'kr-script.conf',
+        desc: '启动入口和基础配置',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/kr-script.conf.md')
+          }
+        }
+      },
+      {
+        key: 'docs-pio-path',
+        label: 'Path',
+        desc: '资源文件路径和匹配逻辑',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Path.md')
+          }
+        }
+      },
+      {
+        key: 'docs-pio-Extra',
+        label: '额外拓展',
+        desc: '这是在PIO里的一些特殊用法，它不属于Linux Shell的常规用法',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Extra.md')
+          }
+        }
+      },
+      {
+        key: 'docs-pio-Other',
+        label: 'Other',
+        desc: '其它技巧和非必要了解的说明',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/Other.md')
+          }
         }
       }
-    }, {
-      key: 'extend',
-      label: '进阶技巧',
-      desc: '观察和了解Go在面向对象方面，与其它高级语言的异同',
-      icon: 'icon-code',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('@/docs/go/4. 进阶技巧.md')
+    ]
+  },
+  {
+    group: '网页引擎',
+    type: 'JS',
+    docs: [
+      {
+        key: 'docs-pio-WebBrowser',
+        label: 'KrScriptCore',
+        desc: '使用网页开发和调用PIO的接口执行shell命令',
+        route: {
+          name: 'OnlineMarkdown',
+          query: {
+            doc: ('file:///android_asset/docs/js-engine/WebBrowser.md')
+          }
         }
       }
-    }, {
-      key: 'mongo',
-      label: 'Go + MongoDB',
-      desc: '在Go中使用 MongoDB Driver 连接到数据库',
-      icon: 'icon-data',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('@/docs/go/6. Go + Mongo.md')
-        }
-      }
-    }, {
-      key: 'webservice',
-      label: 'Go WebService',
-      desc: '使用Go创建自己的Web服务程序',
-      icon: 'icon-web',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('@/docs/go/7. Go WebService.md')
-        }
-      }
-    }, {
-      key: 'docker',
-      label: 'Go + Docker',
-      desc: '在Docker应用容器中，运行打包的Go Web服务程序',
-      icon: 'icon-docker',
-      route: {
-        name: 'OnlineMarkdown',
-        query: {
-          doc: require('@/docs/go/8. Go + Docker.md')
-        }
-      }
-    }]
+    ]
   }
 ]

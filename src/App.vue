@@ -1,58 +1,5 @@
 <template>
   <div id="app">
-    <div class="navigation-bar">
-      <div>
-        <i @click="navigationBar = ! navigationBar" class="navigation-bar-switch icon-menu"></i>
-      </div>
-      <div v-show="navigationBar" class="navigation-bar-items">
-        <div class="nav-item color-oranage">
-          <i class="icon icon-fire"></i>
-          <div>
-            <h4>新鲜出炉</h4><div class="list"> Golang </div>
-          </div>
-        </div>
-
-        <div class="nav-item color-green" @click="goOpenSource">
-          <i class="icon icon-github"></i>
-          <div>
-            <h4>开源项目</h4><div class="list"> Golang </div>
-          </div>
-        </div>
-
-        <div class="nav-item color-blue" @click="goDocumentLibrary">
-          <i class="icon icon-documents"></i>
-          <div>
-            <h4>文档库</h4>
-            <div class="list"> Golang </div>
-          </div>
-        </div>
-
-        <div class="nav-item color-yellow" @click="goApps">
-          <i class="icon icon-app-store"></i>
-          <div>
-            <h4>应用</h4><div class="list"> Golang </div>
-          </div>
-        </div>
-
-        <div class="nav-item color-purple" @click="goMarkdownEdit">
-          <i class="icon icon-markdown"></i>
-          <div>
-            <h4>Markdown编辑器</h4><div class="list"> Golang </div>
-          </div>
-        </div>
-
-        <div class="nav-item color-sky" @click="goAbout">
-          <i class="icon icon-about"></i>
-          <div>
-            <h4>关于</h4><div class="list"> Golang </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <i @click="navigationBar = ! navigationBar" class="navigation-bar-switch icon-setup"></i>
-      </div>
-    </div>
-
     <div class="root-content">
       <router-view />
     </div>
@@ -146,8 +93,10 @@ export default {
   }
 }
 
-.root-content {
-  margin-left: 0.5em;
+@media screen and (min-width: 600px) {
+  .root-content {
+    margin-left: 0.5em;
+  }
 }
 .navigation-bar {
   background-color: #fff;

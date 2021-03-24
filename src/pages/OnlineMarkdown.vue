@@ -31,6 +31,9 @@ export default {
         this.markdownContent = url
         return
       }
+      if (window.location.href.indexOf('file:///android_asset') === 0 && url.indexOf('/') < 2) {
+        url = 'file:///android_asset/' + url
+      }
       axios.get(`${url}`).then((r) => {
         this.markdownContent = r.data
       }).catch((error) => {
