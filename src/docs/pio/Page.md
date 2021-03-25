@@ -18,7 +18,7 @@
 
 | 属性 | 作用 | 有效值 | 示例 |
 | - | - | - | :- |
-| id | 如果允许长按添加到桌面快捷，必需设置ID | 在同一配置文件中不重复的id | `a0001` |
+| id | 设置ID后，该页面可被长按添加为桌面快捷方式 | 当前XML文件里不重复即可 | `a0001` |
 | desc | 描述 | 文本内容 | 显示在标题下的小字，可以不设置 |
 | desc-sh | 动态设置desc内容的脚本 | `脚本代码` | `echo '自定义的说明信息'` |
 | summary | 高亮显示的摘要信息 | 文本内容 | `这是摘要` |
@@ -27,8 +27,7 @@
 | logo | 作为快捷方式添加到桌面时使用的图标 | 文件路径 |  |
 | icon | 显示在功能左侧的图标。如果未设置logo属性，它也同时会被作为logo使用 | 文件路径 |  |
 
-
-> `logo`和`icon`除了支持assets文件路径，也支持磁盘文件路径
+> 注意：仅限定义了config、config-sh的page才能成为一个有效的快捷方式！
 
 - 特有属性
 
@@ -61,13 +60,13 @@
 </page>
 
 <!--输出配置文件绝对路径-->
-<page config-sh="echo '/sdcard/text_test.xml'">
+<page config-sh="echo '/sdcard/text.xml'">
     <title>测试config-sh【路径输出】</title>
     <desc>通过config-sh输出配置页所在位置</desc>
 </page>
 
 <!--输出配置文件内容（框架识别到输出内容以“<?xml”开头 且以“>”结尾，按照此模式解析）-->
-<page config-sh="cat /sdcard/text_test.xml">
+<page config-sh="cat /sdcard/text.xml">
     <title>测试config-sh【全文输出】</title>
     <desc>通过config-sh输出配置页内容</desc>
 </page>

@@ -1,8 +1,15 @@
-### 应用启动过程
-- 在检测完ROOT权限之后，显示功能列表之前
-- 应用会先读取 `assets` 下的 `kr-script.conf`
-- 读取`kr-script.conf`的过程中，会完成 `toolkit_dir` 的提取处理
-- `kr-script.conf` 以 `key="value"` 的格式配置一些基本信息
+## 应用启动过程
+
+> 在 检测完ROOT权限之后，显示功能列表之前<br />
+> PIO会先读取assets中的 `kr-script.conf`<br />
+> 在解析 kr-script.conf 的过程中，会完成：<br />
+> `executor_core` 的转换处理，和 `toolkit_dir` 目录的提取<br />
+> 接下来会执行 `before_start_sh` （如果有配置）<br />
+> 再  执行 `favorite_config_sh` 和 `page_list_config_sh` （如果有配置）<br />
+> 或  读取 `favorite_config` 和 `page_list_config` 
+
+### kr-script.conf配置格式
+- kr-script.conf 以 `key="value"` 的格式配置一些基本信息
 - 例如：
 
   ```sh
@@ -20,7 +27,7 @@
   favorite_config="file:///android_asset/kr-script/favorites.xml"
 
   # 是否显示首页性能监视器（如果不配置，默认显示）
-  allow_home_page="1"
+  allow_home_page="0"
   ```
 
 ### 可配置属性
@@ -36,11 +43,15 @@
 | page_list_config_sh | 输出 **全部** 页配置路径的脚本 | `file:///android_asset/`开头的路径 |
 | favorite_config_sh | 输出 **收藏夹** 页配置路径的脚本 | `file:///android_asset/`开头的路径 |
 
-### before_start_sh
+#### before_start_sh
 - 在解析完`kr-script.conf`之后，会立即执行`before_start_sh` 配置的脚本
 - 执行过程中输出的内容和错误信息，会显示在启动屏上
-- 你可以利用此脚本，完成在线检查更新
+- 你可以利用此脚本，完成在启动前的强制更新
 
-### page_list_config_sh、favorite_config_sh
-- 这两个属性的存在意义，是为了动态指定 **收藏夹** 和 **全部** 两个页面的配置文件所在路径
-- 就像 `<page config-sh="echo 页面路径;" />` 那样
+#### page_list_config_sh、favorite_config_sh
+- 这两个属于分别用于分别指定 **收藏夹** 和 **全部** 两个页面的配置（路径或具体内容）
+- 就像 `page`节点的 `config-sh` 属性一样
+
+## 相关参考
+- page_list_config_sh、favorite_config_sh 需要怎么用
+- 建议参考 [`Page`](#/doc?doc=/docs/Page.md) 中`config-sh`的说明，

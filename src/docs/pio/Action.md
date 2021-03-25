@@ -1,33 +1,43 @@
 ## Action
-
-### 用途
-- 点击后执行一段代码
-- 允许通过参数定义，在执行代码前，让用户进行一些选择
+- Action是在PIO里最基本也是最复杂的组件
+- 它的基本用法是：设置一个用户点击以后会执行一段脚本的节点
+- 它的拓展用法是：在执行脚本前允许用户先输入或做一些选择
 
 ### 入门 Hello world！
-- 先从最简单的开始
-- 点击后执行一段脚本（输出Hello world！）
+- 例如，这个例子就是它最简单的用法
 
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<page>
-    <action>
-        <title>Hello world！</title>
-        <desc>点击我，用脚本输出Hello world！</desc>
-        <set>
+    ```xml
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <page>
+        <action>
+            <title>Hello world！</title>
+            <desc>点击我，用脚本输出Hello world！</desc>
+            <set>
             echo 'Hello world！'
-        </set>
-    </action>
-</page>
-```
+            </set>
+        </action>
+    </page>
+    ```
+- 其中，首行 `<?xml version="1.0" encoding="UTF-8" ?>` 是XML文档固定格式
+- 而根节点 `page`，其实PIO并不关心根节点，也就是说，你写成下面这样也无所谓
 
-### 属性
+    ```xml
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <xxxxx>
+            <action>
+            <!--此处省略若干...-->
+            </action>
+        </xxxxx>
+    ```
+
+
+### Action的属性
 
 - 公共属性（Action、Switch、Picker共有）
 
 | 属性 | 作用 | 有效值 | 示例 |
 | - | - | - | :- |
-| id | 如果允许长按添加到桌面快捷，必需设置ID | 当前配置文件中必需唯一 | `a0001` |
+| id | 设置ID后，该功能可被长按添加为桌面快捷方式 | 当前XML文件里不重复即可 | `a0001` |
 | desc | 显示在标题下的小字，可以不设置 | 文本内容 | `这是描述` |
 | desc-sh | 动态设置desc内容的脚本 | `脚本代码` | `echo '自定义的说明信息'` |
 | summary | 高亮显示的摘要信息 | 文本内容 | `这是摘要` |
@@ -40,20 +50,33 @@
 | logo | 作为快捷方式添加到桌面时使用的图标 | 文件路径 |  |
 | icon | 显示在功能左侧的图标。如果未设置logo属性，它也同时会被作为logo使用 | 文件路径 |  |
 | reload | 执行完脚本后要执行的刷新操作 | `page` 、具体体功能`id` | `page` |
-| bg-task | 后台运行而不是显示日志输出界面，默认`false` | `true` `false` | `true` |
+| shell | 执行脚本时的交互界面，可设置为：日志输出(default)、静默执行(hidden)、后台执行(bg-task) | `default` `hidden` `bg-task` | `bg-task` |
 
 > `id` 属性建议配合 `auto-off`、`auto-finish`、`logo` 使用
 
 > `logo`和`icon`除了支持assets文件路径，也支持磁盘文件路径
 
-#### Action 定义参数
+#### Action 定义参数(param)
 - 用于需要用户“输入内容” 或 “作出选择”的场景
+- 例如，这里有个最简单的例子，在执行脚本前，需要用户输入自己的姓名
 
-##### param 属性
+```xml
+<action>
+    <title>你叫什么名字？</title>
+    <set>echo '我知道了，你叫：' $first_name</set>
+    <param
+        name="first_name"
+        placeholder="请在这里输入您的姓名"
+        value="张三" />
+</action>
+```
+
+##### param 的属性
+- 当然，`param` 的交互方式并不仅限于输入简单文本，来看看都可以设置什么
 
 | 属性 | 用途 | 示例 |
 | - | - | - |
-| name | 参数名，不可重复`必需！` | `param0` |
+| name | 参数名，不可重复 `必需！` | `param0` |
 | value | 初始值 | ` ` |
 | value-sh | 使用脚本通过echo输出设置参数初始值 | ` ` |
 | options-sh | 使用脚本通过echo输出来生成 option | ` ` |
@@ -61,7 +84,7 @@
 | label | 参数的标题，显示在输入框左侧 | `任意提示文字` |
 | placeholder | 显示在文本输入框的水印文字，可用作输入为空时的提示 | `请在此处输入文字` |
 | desc | 参数的描述，显示在输入框下方 | `任意提示文字` |
-| type | 输入类型，具体见下文 | `int` |
+| `type` | 输入类型，具体见下文 | `int` |
 | readonly | 设为readonly表示只读，阻止输入 | `readonly` | 
 | maxlength | 输入长度限制（位）适用于文本输入 | `10` |
 | min | 输入的最小值，适用于数字输入和seekbar | `10` |
@@ -91,92 +114,62 @@
 | folder | 目录选择器 | 选中目录的绝对路径 |
 | color | 颜色输入和选择界面 | 输入形如`#445566`或`#ff445566`的色值 |
 | app | 应用选择器（可配置为多选） | 选取的应用包名 |
+| packages | 包名选择器（可配置为多选） | 选取的应用包名 |
 | text | 任意文本输入（默认） | 任意自定义输入的文本 |
 
-> param的type设为`seekbar`时，必需设置`min`和`max`属性！！
+> param的type设为`seekbar`时，必需设置`min`和`max`属性！！<br />
+> param的`type=packages`和`type=app`的区别在于，前者会显示用户未安装的应用选项（只要是包含在你指定的`option`列表里），而后者只会显示用户已安装的应用
 
-- 基本示例：
+##### param 示例
+- 可配置的属性颇多，但不一定都用的上。来看看几个经典用法的示例
 
-```xml
-<action>
-    <title>自定义DPI</title>
-    <desc>允许你自定义手机DPI，1080P屏幕推荐DPI为400~480，设置太高或太低可能导致界面崩溃！</desc>
-    <set>wm density $dpi;</set>
-    <!--通过params定义脚本执行参数-->
-    <params>
-        <param name="dpi" desc="请输入DPI" type="int" max="96" min="160" value="480" />
-    </params>
-</action>
-```
-
-##### param 的 value-sh属性
-- 例如，你需要在用户输入前动态获取当前已设置的值
+###### value-sh属性
+- 比如，我们在显示一个开关按钮时，通常希望它默认的状态取决于上次的设置，而不是一个默认值
+- 所以，我们希望用一段脚本去读取上次设置的记录，此时就需要用到 `value-sh`
+- 例如：
 
 ```xml
 <action>
-    <title>自定义DPI</title>
-    <desc>允许你自定义手机DPI，1080P屏幕推荐DPI为400~480，设置太高或太低可能导致界面崩溃！</desc>
-    <set>wm density $dpi;</set>
-    <!--通过params定义脚本执行参数-->
-    <params>
-        <param name="dpi" desc="请输入DPI" type="int" value-sh="echo '480'" />
-    </params>
+    <title>显示触摸位置</title>
+    <set>settings put system pointer_location $p0</set>
+    <param
+        name="p0"
+        label="显示触摸位置"
+        type="switch"
+        value-sh="settings get system pointer_location" />
 </action>
 ```
 
-
-##### param > option
-- 通过在param 下定义 option，实现下拉框候选列表
+##### param 下拉类型
+- param的下拉类型不由`type`指定，
+- 而是判断是否有定义`option`子节点或`option-sh`属性来决定是否显示为下拉框
+- `<option>` 只有一个`value`属性
+- 例如：
 
 ```xml
 <action>
     <title>切换状态栏风格</title>
-    <desc>选择状态栏布局，[时间居中/默认]</desc>
-    <!--可以在script中使用定义的参数-->
     <set>
-        echo "mode参数的值：$mode"
         if [ "$mode" = "time_center" ]; then
             echo '刚刚点了 时间居中'
         else
             echo '刚刚点击了 默认布局'
         fi;
     </set>
-    <!--params 用于在执行脚本前，先通过用户交互的方式定义变量，参数数量不限于一个，但不建议定义太多-->
-    <params>
-        <param name="mode" value="default" desc="请选择布局">
-            <!--通过option 自定义选项
-                [value]=[当前选项的值] 如果不写这个属性，则默认使用显示文字作为值-->
-            <option value="default">默认布局</option>
-            <option value="time_center">时间居中</option>
-        </param>
-    </params>
+    <param name="mode" value="default">
+        <!--通过option 自定义选项
+            [value]=[当前选项的值] 如果不写这个属性，则默认使用文字内容作为值-->
+        <option value="default">默认布局</option>
+        <option value="time_center">时间居中</option>
+    </param>
 </action>
 ```
 
-
-##### param 输入长度限制
-
-```xml
-<action>
-    <title>自定义DPI</title>
-    <desc>允许你自定义手机DPI，1080P屏幕推荐DPI为400~480，设置太高或太低可能导致界面崩溃！</desc>
-    <set>
-        wm density $dpi;
-        wm size ${width}x${height};
-    </set>
-    <params>
-        <param name="dpi" desc="请输入DPI，推荐值：400~480" type="int" value="440" maxlength="3" />
-        <param name="width" desc="请输入屏幕横向分辨率" type="int" value="1080" maxlength="4" />
-        <param name="height" desc="请输入屏幕纵向向分辨率" type="int" value="1920" maxlength="4" />
-    </params>
-</action>
-```
-
-##### param > option 动态列表
-- 现在允许更灵活的定义Param的option列表了，通过使用脚本代码输出内，即可实现
-- 脚本的执行过程中的输出内容，每一个each将作为一个选项，如 echo '很小'; echo '适中';
+- 使用`option-sh`属性，你还可以用脚本输出选项，从而实现不同设备上显示不同的选项
+- 在脚本中每一行输出会作为一个选项显示
 - 如果你需要将选项的value（值）和label（显示文字）分开
-- 用“|”分隔value和label即可，如：echo '380|很小'
+- 用 `|` 分隔value和label即可，如：echo '380|很小'
+- 如果没添加 `|` 分隔符，则整行输出作为显示文本，同时也作为值使用
 
 ```xml
 <action desc-sh="echo '快速调整手机DPI，不需要重启，当前设置：';echo `wm density`;">
@@ -188,7 +181,10 @@
         busybox killall com.android.systemui;
     </set>
     <params>
-        <param name="dpi" value="440" options-sh="echo '380|很小';echo '410|较小';echo '440|适中';echo '480|较大';" />
+        <param
+            name="dpi"
+            value-sh="wm density"
+            options-sh="echo '380|很小';echo '410|较小';echo '440|适中';echo '480|较大';" />
     </params>
 </action>
 ```
@@ -208,67 +204,14 @@
     </action>
     ```
 
-- 默认设置下，多选列表的各个值用换行分隔，得到的参数可能是这样的
+- 默认设置下，多选列表的各个选中值用换行分隔，得到的数据是这样的
     ```sh
     value="
     aaa
     bbb
     "
     ```
-- 可有时候，你希望得到的值是 `value="aaa,bbb"` 这样的？
-- 其实你可以通过`separator`属性自定义分隔符，例如：
-    ```xml
-    <action>
-        <title>多选下拉</title>
-        <param name="test" label="多选下拉" multiple="multiple" separator=",">
-            <option value="Z">测试一下 Z</option>
-            <option value="X">测试一下 X</option>
-        </param>
-        <set>echo '数值为：' $test</set>
-    </action>
-    ```
-
-##### param 选择应用
-- 参数类型`type=app`是在3.9版本中新增加的类型
-
-- 像下面这个例子，是它最简单的用法：
-    ```xml
-    <action>
-        <title>请选择一个应用</title>
-        <param name="package_name" type="app" />
-        <set>echo '包名为：' $package_name</set>
-    </action>
-    ```
-- 那如何限制用户只可选择哪些应用呢？其实设置`option`就好了
-    > 列表最终呈现的是包含在你的option里且用户已安装的应用
-
-    ```xml
-    <action>
-        <title>请选择一个应用</title>
-        <desc>配合options-sh轻松的限制可被选择的APP</desc>
-        <param
-            name="package_name"
-            type="app"
-            options-sh="pm list package -3 | cut -f2 -d ':'" />
-        <set>echo '包名为：' $package_name</set>
-    </action>
-    ```
-
-- 你甚至能设置为可以选择多个应用，以及默认的选中项，就像这样
-    ```xml
-    <action>
-        <title>请选择几个应用</title>
-        <desc>也可以设置允许选择多个应用，同时还可以设置默认选中项</desc>
-        <param
-            name="package_name"
-            value="com.projectkr.shell,com.android.browser"
-            separator=","
-            type="app"
-            multiple="multiple"
-            options-sh="pm list package -3 | cut -f2 -d ':'" />
-        <set>echo '包名为：' $package_name</set>
-    </action>
-    ```
+- 其实只要在`param`节点添加 `separator="@"` 就能得到 `value="aaa@bbb"` 这样的数据
 
 #
 
@@ -277,7 +220,7 @@
 > 相关说明
 
 - 由于在xml中写大量的shell代码非常不方便，也不美观，
-- 建议参考 [`脚本使用`](/samples/docs/Script.md) 中的说明，
+- 建议参考 [`Script`](#/doc?doc=/docs/Script.md) 中的说明，
 - 将`visible`属性需要执行的代码，写在一个单独的文件中。
 
 > 文件选择器的类型限制说明

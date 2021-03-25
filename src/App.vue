@@ -7,9 +7,6 @@
 </template>
 
 <script>
-import './assets/highlight/highlight.pack.js'
-import './assets/highlight/styles/vs.css'
-
 export default {
   name: 'app',
   data () {

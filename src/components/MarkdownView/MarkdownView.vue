@@ -10,6 +10,9 @@
 
 <script>
 import marked from 'marked'
+import '../../assets/highlight/vs.css'
+import '../../assets/highlight/highlight.pack.js'
+
 marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,

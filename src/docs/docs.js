@@ -1,6 +1,6 @@
 export default [
   {
-    group: 'PIO(Kr-Script)3.9.1',
+    group: 'PIO(Kr-Script)4.0.0',
     type: 'PIO',
     docs: [
       {
@@ -127,13 +127,13 @@ export default [
     type: 'EXT',
     docs: [
       {
-        key: 'docs-pio-Property_Visible',
-        label: 'visible属性',
-        desc: '你可以通过visible配置一段脚本，用来动态设置功能是否可以在当前设备上显示',
+        key: 'docs-pio-other',
+        label: '隐藏和锁定功能',
+        desc: '限制功能只在某些设备上显示，或只在特定情况允许点击（操作）',
         route: {
           name: 'OnlineMarkdown',
           query: {
-            doc: ('file:///android_asset/docs/Property_Visible.md')
+            doc: ('file:///android_asset/docs/Property_Other.md')
           }
         }
       },

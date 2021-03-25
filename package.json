@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "highlight.js": "^9.12.0",
     "html-loader": "^0.5.4",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
@@ -23,6 +22,7 @@
     "node-sass": "^4.11.0",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
+    "vue-hljs": "^2.0.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
