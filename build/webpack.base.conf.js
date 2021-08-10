@@ -92,7 +92,8 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 1,
-          name: utils.assetsPath('docs/[name].[hash:7].[ext]')
+          // name: utils.assetsPath('docs/[name].[hash:7].[ext]'
+          name: utils.assetsPath('docs/[name].[ext]')
         }
       },
       {
